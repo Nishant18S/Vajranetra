@@ -1,0 +1,561 @@
+/* ============================================================
+   VAJRANETRA — Authority portal theme
+   Dark command-center. Scoped under .vn-admin.
+   ============================================================ */
+
+.vn-admin {
+  --a-bg:          #070b14;
+  --a-surface:     #0d1425;
+  --a-surface-2:   #111a2e;
+  --a-surface-3:   #16203a;
+  --a-border:      #1f2a44;
+  --a-border-soft: #16203a;
+
+  --a-text:        #e6edf7;
+  --a-text-mid:    #b6c1d3;
+  --a-text-dim:    #7c8aa3;
+  --a-text-faint:  #5a6580;
+
+  --a-accent:      #22d3ee;
+  --a-accent-dim:  #0e7490;
+  --a-accent-soft: rgba(34, 211, 238, 0.12);
+
+  --a-green:       #10b981;
+  --a-amber:       #f59e0b;
+  --a-orange:      #f97316;
+  --a-red:         #ef4444;
+
+  --a-header-h:    56px;
+  --a-sidebar-w:   232px;
+
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--a-text);
+  background: var(--a-bg);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ---------- Layout ---------- */
+.vn-admin__body {
+  display: grid;
+  grid-template-columns: var(--a-sidebar-w) 1fr;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--a-bg);
+}
+
+@media (max-width: 1023px) {
+  .vn-admin,
+  .vn-admin__body {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .vn-admin__body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Sidebar ---------- */
+.vn-admin__sidebar {
+  background: #050a12;
+  border-right: 1px solid var(--a-border);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .vn-admin__sidebar {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+}
+
+.vn-admin__sidebar-brand {
+  height: var(--a-header-h);
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--a-border);
+  flex-shrink: 0;
+}
+
+.vn-admin__sidebar-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--a-accent-soft);
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--a-accent);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.vn-admin__sidebar-title {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+
+.vn-admin__sidebar-sub {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--a-text-faint);
+  text-transform: uppercase;
+}
+
+/* Nav scrolls internally if the list is long */
+.vn-admin__nav {
+  padding: 12px 8px;
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.vn-admin__nav-section {
+  padding: 14px 10px 6px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--a-text-faint);
+  font-weight: 600;
+}
+
+.vn-admin__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  margin: 1px 0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--a-text-mid);
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+
+.vn-admin__nav-link:hover {
+  background: var(--a-surface);
+  color: var(--a-text);
+}
+
+.vn-admin__nav-link--active {
+  background: var(--a-accent-soft);
+  color: var(--a-accent);
+  font-weight: 600;
+}
+
+.vn-admin__nav-link--active svg {
+  color: var(--a-accent);
+}
+
+.vn-admin__sidebar-foot {
+  padding: 12px 16px;
+  border-top: 1px solid var(--a-border);
+  font-size: 11px;
+  color: var(--a-text-faint);
+  line-height: 1.5;
+  flex-shrink: 0;
+  background: #050a12;
+}
+
+/* ---------- Top bar ---------- */
+.vn-admin__topbar {
+  height: var(--a-header-h);
+  background: var(--a-surface);
+  border-bottom: 1px solid var(--a-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  gap: 16px;
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+/* ---------- Main column ---------- */
+.vn-admin__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 1023px) {
+  .vn-admin__main {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+}
+
+/* Only this area scrolls on desktop */
+.vn-admin__content {
+  padding: 20px;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ---------- Pills / status ---------- */
+.vn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a-text-dim);
+}
+.vn-pill__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--a-text-faint);
+}
+.vn-pill__dot--ok       { background: var(--a-green); box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
+.vn-pill__dot--warn     { background: var(--a-amber); }
+.vn-pill__dot--crit     { background: var(--a-red); }
+.vn-pill__dot--pending  { background: var(--a-text-faint); }
+
+/* ---------- Panel / card ---------- */
+.vn-adm-panel {
+  background: var(--a-surface);
+  border: 1px solid var(--a-border);
+  border-radius: 8px;
+}
+.vn-adm-panel__hd {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--a-border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.vn-adm-panel__title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--a-text-dim);
+}
+
+/* ---------- Buttons ---------- */
+.vn-adm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  text-decoration: none;
+}
+.vn-adm-btn--primary {
+  background: var(--a-accent);
+  color: #04131f;
+}
+.vn-adm-btn--primary:hover { background: #67e8f9; }
+.vn-adm-btn--outline {
+  background: transparent;
+  color: var(--a-text);
+  border-color: var(--a-border);
+}
+.vn-adm-btn--outline:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  color: var(--a-accent);
+}
+.vn-adm-btn--danger {
+  background: var(--a-red);
+  color: #fff;
+}
+.vn-adm-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- Severity badges ---------- */
+.vn-adm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+.vn-adm-badge--low      { color: var(--a-green);  background: rgba(16, 185, 129, 0.10); border-color: rgba(16, 185, 129, 0.35); }
+.vn-adm-badge--moderate { color: var(--a-amber);  background: rgba(245, 158, 11, 0.10); border-color: rgba(245, 158, 11, 0.35); }
+.vn-adm-badge--high     { color: var(--a-orange); background: rgba(249, 115, 22, 0.10); border-color: rgba(249, 115, 22, 0.35); }
+.vn-adm-badge--critical { color: var(--a-red);    background: rgba(239, 68, 68, 0.10);  border-color: rgba(239, 68, 68, 0.35); }
+.vn-adm-badge--info     { color: var(--a-accent); background: var(--a-accent-soft);      border-color: rgba(34, 211, 238, 0.35); }
+
+/* ---------- Tables ---------- */
+.vn-adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.vn-adm-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--a-text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 10px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--a-border);
+  position: sticky;
+  top: 0;
+  background: var(--a-surface);
+  z-index: 1;
+}
+.vn-adm-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--a-border-soft);
+  color: var(--a-text);
+}
+.vn-adm-table tr:hover td {
+  background: rgba(34, 211, 238, 0.03);
+}
+
+/* ---------- Utility ---------- */
+.vn-admin .mono {
+  font-variant-numeric: tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+.vn-admin .kpi-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--a-text-faint);
+}
+.vn-admin .kpi-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--a-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Mobile drawer ---------- */
+.vn-admin__drawer-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 30;
+}
+.vn-admin__drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 260px;
+  max-width: 80vw;
+  background: #050a12;
+  border-right: 1px solid var(--a-border);
+  z-index: 40;
+  overflow-y: auto;
+  transform: translateX(0);
+  transition: transform 0.2s;
+}
+.vn-admin__hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid var(--a-border);
+  background: var(--a-surface-2);
+  color: var(--a-text);
+  cursor: pointer;
+}
+.vn-admin__hamburger:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  color: var(--a-accent);
+}
+
+/* ============================================
+   Dark Leaflet controls inside the admin shell
+   ============================================ */
+
+.vn-admin .leaflet-container {
+  background: var(--a-bg);
+  font-family: inherit;
+}
+
+.vn-admin .leaflet-control-zoom a {
+  background: var(--a-surface-2) !important;
+  color: var(--a-text) !important;
+  border-color: var(--a-border) !important;
+}
+.vn-admin .leaflet-control-zoom a:hover {
+  background: var(--a-surface-3) !important;
+  color: var(--a-accent) !important;
+}
+
+.vn-admin .leaflet-control-attribution {
+  background: rgba(10, 15, 28, 0.85) !important;
+  color: var(--a-text-faint) !important;
+  border: 1px solid var(--a-border);
+  border-radius: 4px;
+  font-size: 10px;
+}
+.vn-admin .leaflet-control-attribution a {
+  color: var(--a-accent) !important;
+}
+
+.vn-admin .leaflet-popup-content-wrapper {
+  background: var(--a-surface-2);
+  color: var(--a-text);
+  border: 1px solid var(--a-border);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+}
+.vn-admin .leaflet-popup-tip {
+  background: var(--a-surface-2);
+  border: 1px solid var(--a-border);
+}
+.vn-admin .leaflet-popup-content {
+  margin: 8px 10px;
+  font-size: 11px;
+}
+.vn-admin .leaflet-container a.leaflet-popup-close-button {
+  color: var(--a-text-dim);
+}
+
+/* Peak / location markers are custom divIcons — remove Leaflet's default box */
+.vn-location-marker,
+.vn-alert-marker,
+.vn-peak-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* ============================================
+   Custom scrollbars for admin panels
+   ============================================ */
+
+.vn-admin ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.vn-admin ::-webkit-scrollbar-track {
+  background: var(--a-bg);
+}
+.vn-admin ::-webkit-scrollbar-thumb {
+  background: var(--a-border);
+  border-radius: 4px;
+}
+.vn-admin ::-webkit-scrollbar-thumb:hover {
+  background: var(--a-surface-3);
+}
+
+/* Floating map legend */
+.vn-map-legend {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 500;
+  background: rgba(13, 20, 37, 0.92);
+  border: 1px solid #1f2a44;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 11px;
+  color: #e6edf7;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  max-width: 240px;
+}
+.vn-map-legend__title {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #5a6580;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.vn-map-legend__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.vn-map-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.vn-map-legend__swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+.vn-map-legend__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 8px;
+  line-height: 1;
+}
+.vn-map-legend__label {
+  color: #b6c1d3;
+}
+
+/* Tighter Leaflet attribution on dark panel */
+.vn-admin .leaflet-control-attribution {
+  background: rgba(13, 20, 37, 0.9) !important;
+  color: #7c8aa3 !important;
+  border-radius: 4px;
+  font-size: 10px;
+  padding: 2px 6px;
+}
+.vn-admin .leaflet-control-attribution a {
+  color: #22d3ee !important;
+}
+
+/* Popup style */
+.vn-admin .leaflet-popup-content-wrapper {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.vn-admin .leaflet-popup-tip {
+  background: #ffffff;
+}
+.vn-admin .leaflet-popup-content {
+  margin: 10px 12px;
+}
+.vn-admin .leaflet-container a.leaflet-popup-close-button {
+  color: #64748b;
+}
+
+/* Zoom controls, dark styled */
+.vn-admin .leaflet-control-zoom a {
+  background: #0d1425 !important;
+  color: #e6edf7 !important;
+  border-color: #1f2a44 !important;
+}
+.vn-admin .leaflet-control-zoom a:hover {
+  background: #16203a !important;
+  color: #22d3ee !important;
+}

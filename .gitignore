@@ -1,0 +1,256 @@
+# =========================================================
+# MERN STACK - .gitignore
+# =========================================================
+
+# ---------------------------------------------------------
+# Node.js / npm
+# ---------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Package manager files - KEEP package-lock.json
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+
+# ---------------------------------------------------------
+# Environment Variables / Secrets
+# ---------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# Certificates / Private Keys
+*.pem
+*.key
+*.crt
+
+# Credentials / Service Accounts
+credentials.json
+token.json
+service-account*.json
+secrets/
+.cache/
+
+
+# ---------------------------------------------------------
+# Backend - Node.js / Express
+# ---------------------------------------------------------
+server/node_modules/
+server/logs/
+server/*.log
+
+# Alternative backend folder names
+backend/node_modules/
+backend/logs/
+backend/*.log
+
+# Runtime files
+*.pid
+*.pid.lock
+
+
+# ---------------------------------------------------------
+# Frontend - React / Vite
+# ---------------------------------------------------------
+client/node_modules/
+client/dist/
+client/build/
+
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Vite
+.vite/
+
+# React
+.eslintcache
+
+
+# ---------------------------------------------------------
+# MongoDB / Database
+# ---------------------------------------------------------
+# Local MongoDB database files
+data/db/
+mongodb/
+mongo-data/
+
+# MongoDB dumps
+dump/
+*.bson
+*.bson.gz
+
+# Database exports
+*.sqlite
+*.db
+
+
+# ---------------------------------------------------------
+# AI / ML Models
+# ---------------------------------------------------------
+# Python cache
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Python environments
+venv/
+.venv/
+env/
+ENV/
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.safetensors
+*.h5
+*.hdf5
+
+# Training outputs
+checkpoints/
+outputs/
+runs/
+wandb/
+mlruns/
+
+
+# ---------------------------------------------------------
+# Large Datasets
+# ---------------------------------------------------------
+data/raw/
+data/intermediate/
+data/features/
+data/labels/
+data/processed/
+
+*.csv
+*.parquet
+*.feather
+*.npy
+*.npz
+*.pkl
+*.pickle
+
+
+# ---------------------------------------------------------
+# Geospatial / Scientific Data
+# ---------------------------------------------------------
+*.nc
+*.nc4
+*.grib
+*.grb
+*.grib2
+*.tif
+*.tiff
+*.vrt
+
+# Archives
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.bz2
+
+
+# ---------------------------------------------------------
+# Build / Distribution
+# ---------------------------------------------------------
+build/
+dist/
+*.egg
+
+
+# ---------------------------------------------------------
+# Logs
+# ---------------------------------------------------------
+*.log
+logs/
+log/
+
+
+# ---------------------------------------------------------
+# Temporary Files
+# ---------------------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.swoupdate
+
+
+# ---------------------------------------------------------
+# IDE / Editor
+# ---------------------------------------------------------
+.vscode/
+.idea/
+*.iml
+
+# VS Code local settings
+.history/
+
+
+# ---------------------------------------------------------
+# OS Files
+# ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# ---------------------------------------------------------
+# Testing / Coverage
+# ---------------------------------------------------------
+coverage/
+.nyc_output/
+.pytest_cache/
+
+
+# ---------------------------------------------------------
+# Vercel / Deployment
+# ---------------------------------------------------------
+.vercel/
+
+# Netlify
+.netlify/
+
+# Firebase
+.firebase/
+
+
+# ---------------------------------------------------------
+# Uploads / User Generated Files
+# ---------------------------------------------------------
+uploads/
+server/uploads/
+backend/uploads/
+
+# Temporary frontend uploads
+client/public/uploads/
+frontend/public/uploads/
+
+
+# ---------------------------------------------------------
+# Generated Documentation / Reports
+# ---------------------------------------------------------
+reports/
+generated/
+*.pdf
+
+
+# ---------------------------------------------------------
+# Local Configuration
+# ---------------------------------------------------------
+*.local
+
+# Keep example environment configuration
+!.env.example
